@@ -1,0 +1,112 @@
+{
+  "user_not_found": {
+    "en":  "User is not found.",
+    "az": "İstifadəçi tapılmadı.",
+    "ru": "Пользователь не найден."
+  },
+  "invalid_token":{
+    "en": "Token is invalid."
+  },
+  "token_creation_error": {
+    "en": "Could not create a token."
+  },
+  "invalid_data": {
+    "en": "An invalid data format was entered."
+  },
+  "invalid_id": {
+    "en":  "An invalid ID format was entered."
+  },
+  "invalid_status": {
+    "en": "An invalid status format was entered."
+  },
+  "invalid_user_credentials": {
+    "en": "An invalid user credentials was entered."
+  },
+  "invalid_username": {
+    "en": "An invalid username format was entered."
+  },
+  "invalid_password": {
+    "en": "An invalid password format was entered."
+  },
+  "unexpected_error": {
+    "en": "Something went wrong."
+  },
+  "user_already_exists": {
+    "en": "User with this username already exists."
+  },
+  "incorrect_password": {
+    "en": "Password is not correct"
+  },
+  "no_user": {
+    "en":  "User is not found"
+  },
+  "cannot_find_data": {
+    "en": "Data is not found"
+  },
+  "cannot_create": {
+    "en": "Cannot create a data"
+  },
+  "cannot_update" : {
+    "en": "Cannot update the data"
+  },
+  "no_role": {
+    "en": "Role is not found"
+  },
+  "cannot_delete" : {
+    "en": "Cannot delete"
+  },
+  "access_token_expired": {
+    "en": "Unauthorized! Access Token was expired!"
+  },
+  "cannot_get_roles": {
+    "en": "Cannot get roles"
+  },
+  "unauthorized": {
+    "en": "Unauthorized"
+  },
+  "access_not_authorized": {
+    "en": "Not authorized to access this route"
+  },
+  "user_signed_out": {
+    "en": "User already sign out"
+  },
+  "already_logged_in": {
+    "en": "You are already logged in to system."
+  },
+  "unknown error": {
+    "en": "Unknown error occurred."
+  },
+  "already_exists": {
+    "en": "Already exists."
+  },
+  "bearer_token_missing": {
+    "en": "Bearer Token missing"
+  },
+  "not_found_client": {
+    "en": "Not found client"
+  },
+  "not_found_realm_admin": {
+    "en": "Realm-admin role not found."
+  },
+  "user_already_exist": {
+    "en": "User already exist."
+  },
+  "not_found_inventory_category": {
+    "en": "Not found this inventory."
+  },
+  "not_found_logistic_center": {
+    "en": "Not found this logistic center."
+  },
+  "not_found_warehouse": {
+    "en": "Not found this warehouse."
+  },
+  "not_found_location": {
+    "en": "Not found this location."
+  },
+  "delete_inventory_msg": {
+    "en": "Contact Administrator to delete inventory"
+  },
+  "duplicate_err": {
+    "en": "Data already exist."
+  }
+}

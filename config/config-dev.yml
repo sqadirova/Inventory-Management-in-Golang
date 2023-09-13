@@ -1,0 +1,41 @@
+database:
+  host: localhost
+  port: 5432
+  dialect: postgres
+  user: postgres
+  dbname: im-db
+  password: 12345
+  MaxIdleConn: 20
+  MaxOpenConn: 300
+  MaxConnLifetimeHour: 1
+  sslmode: disable
+  schema: im.
+
+app:
+  host: localhost
+  port: 8080
+
+jwt:
+  secretKey: 9bd82804-970d-44d6-9bc9-f65079ab10dd
+  publicKey: secret
+  privateKey: secret
+  saltKey: salt-key
+  accessTokenExpire: 2592000
+
+swagger:
+  host: localhost:8080
+  scheme: http
+
+cookie:
+  name: REFRESH_TOKEN
+  httpOnly: true
+  secure: false
+  expires: 720h
+  sameSite:
+
+keycloakConfig:
+  path: http://192.168.8.91:8080
+  ClientName: inventory
+  ClientSecretKey: 02hKNvUuKPXzoQgz4S8VScuHEribwMyK
+  RealmName: test_realm_im
+
