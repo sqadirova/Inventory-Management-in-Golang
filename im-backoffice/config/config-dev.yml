@@ -1,0 +1,40 @@
+database:
+  host:
+  port:
+  dialect: postgres
+  user:
+  dbname:
+  password:
+  MaxIdleConn: 20
+  MaxOpenConn: 300
+  MaxConnLifetimeHour: 1
+  sslmode: disable
+  schema: im.
+
+app:
+  host: localhost
+  port: 8080
+
+jwt:
+  secretKey: 9bd82804-970d-44d6-9bc9-f65079ab10dd
+  publicKey: secret
+  privateKey: secret
+  saltKey: salt-key
+  accessTokenExpire: 2592000
+
+swagger:
+  host: localhost:8080
+  scheme: http
+
+cookie:
+  name: REFRESH_TOKEN
+  httpOnly: true
+  secure: false
+  expires: 720h
+  sameSite: none
+
+keycloakConfig:
+  path:
+  ClientName:
+  ClientSecretKey:
+  RealmName:

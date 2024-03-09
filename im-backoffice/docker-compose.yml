@@ -1,0 +1,36 @@
+#version: "3"
+#
+#services:
+#
+#  keycloak:
+#    networks:
+#      - mm
+#    ports:
+#      - "8086:8086"
+#    container_name: keycloak
+#    image: jboss/keycloak
+#    environment:
+#      - KEYCLOAK_USER=admin
+#      - KEYCLOAK_PASSWORD=admin
+#
+#networks:
+#  mm:
+#    driver: bridge
+
+
+#version: '3'
+#services:
+#  keycloak:
+#    container_name: keycloak
+#    image: conciso/keycloak-spi-example
+#    environment:
+#      KEYCLOAK_USER: admin
+#      KEYCLOAK_PASSWORD: admin
+#      SUBJECT_PREFIX: SSO
+#    ports:
+#      - 8080:8080
+#  mail:
+#    container_name: mail
+#    image: djfarrelly/maildev
+#    ports:
+#      - 9080:80

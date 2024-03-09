@@ -1,0 +1,1338 @@
+basePath: /api/v1
+definitions:
+  auth.RefreshTokenResponse:
+    properties:
+      access_token:
+        type: string
+    type: object
+  auth.SignInReq:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  auth.SignInResp:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    required:
+    - access_token
+    type: object
+  auth.SignOutDTO:
+    properties:
+      user_id:
+        type: string
+    required:
+    - user_id
+    type: object
+  errors.Response:
+    properties:
+      key:
+        type: string
+      message:
+        type: string
+    type: object
+  inventory.CreateInventoryRequest:
+    properties:
+      actual_qty:
+        type: string
+      inventory_category_id:
+        type: string
+      inventory_name:
+        type: string
+      inventory_rfid:
+        type: string
+      location_id:
+        type: string
+      logistic_center_id:
+        type: string
+      warehouse_id:
+        type: string
+    required:
+    - actual_qty
+    - inventory_category_id
+    - inventory_name
+    - inventory_rfid
+    - location_id
+    - logistic_center_id
+    - warehouse_id
+    type: object
+  inventory.InventoryInfoDto:
+    properties:
+      actual_qty:
+        type: string
+      inventory_id:
+        type: string
+      inventory_name:
+        type: string
+      inventory_rfid:
+        type: string
+      location:
+        $ref: '#/definitions/inventory.LocationDto'
+      logistic_center:
+        $ref: '#/definitions/logisticCenter.LogisticCenterRes'
+      warehouse:
+        $ref: '#/definitions/inventory.WarehouseDto'
+    type: object
+  inventory.InventoryResponse:
+    properties:
+      inventories:
+        items:
+          $ref: '#/definitions/inventory.InventoryInfoDto'
+        type: array
+      inventory_category:
+        $ref: '#/definitions/inventoryCategory.InventoryCategoryDTO'
+    type: object
+  inventory.LocationDto:
+    properties:
+      location_id:
+        type: string
+      location_name:
+        type: string
+    type: object
+  inventory.UpdateInventoryRequest:
+    properties:
+      actual_qty:
+        type: string
+      inventory_category_id:
+        type: string
+      inventory_name:
+        type: string
+      location_id:
+        type: string
+      logistic_center_id:
+        type: string
+      warehouse_id:
+        type: string
+    required:
+    - actual_qty
+    - inventory_category_id
+    - inventory_name
+    - location_id
+    - logistic_center_id
+    - warehouse_id
+    type: object
+  inventory.WarehouseDto:
+    properties:
+      warehouse_id:
+        type: string
+      warehouse_name:
+        type: string
+    type: object
+  inventoryCategory.InventoryCategoryDTO:
+    properties:
+      id:
+        type: string
+      inventory_category_name:
+        type: string
+    type: object
+  inventoryCategory.InventoryCategoryReq:
+    properties:
+      inventory_category_name:
+        type: string
+    required:
+    - inventory_category_name
+    type: object
+  inventoryCategory.InventoryCategoryResponse:
+    properties:
+      inventory_categories:
+        items:
+          $ref: '#/definitions/inventoryCategory.InventoryCategoryDTO'
+        type: array
+      next_page:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  location.LocationDTO:
+    properties:
+      location_id:
+        type: string
+      location_name:
+        type: string
+      warehouse:
+        $ref: '#/definitions/location.WarehouseDto'
+    type: object
+  location.LocationDTOReq:
+    properties:
+      location_name:
+        type: string
+      warehouse_id:
+        type: string
+    required:
+    - location_name
+    - warehouse_id
+    type: object
+  location.WarehouseDto:
+    properties:
+      warehouse_id:
+        type: string
+      warehouse_name:
+        type: string
+    type: object
+  logisticCenter.LGLocationInfoDTO:
+    properties:
+      id:
+        type: string
+      location_name:
+        type: string
+    type: object
+  logisticCenter.LGWarehouseInfoDTO:
+    properties:
+      id:
+        type: string
+      locations:
+        items:
+          $ref: '#/definitions/logisticCenter.LGLocationInfoDTO'
+        type: array
+      warehouse_name:
+        type: string
+    type: object
+  logisticCenter.LogisticCenterDTO:
+    properties:
+      logistic_center_id:
+        type: string
+      logistic_center_name:
+        type: string
+    required:
+    - logistic_center_name
+    type: object
+  logisticCenter.LogisticCenterRequest:
+    properties:
+      logistic_center_name:
+        type: string
+    required:
+    - logistic_center_name
+    type: object
+  logisticCenter.LogisticCenterRes:
+    properties:
+      id:
+        type: string
+      logistic_center_name:
+        type: string
+    type: object
+  logisticCenter.LogisticCenterResponseDTO:
+    properties:
+      id:
+        type: string
+      logistic_center_name:
+        type: string
+      warehouses:
+        items:
+          $ref: '#/definitions/logisticCenter.LGWarehouseInfoDTO'
+        type: array
+    type: object
+  user.RolesResp:
+    properties:
+      id:
+        type: string
+      role_type:
+        type: string
+    type: object
+  user.UpdateUserReq:
+    properties:
+      enabled:
+        type: boolean
+      firstname:
+        type: string
+      lastname:
+        type: string
+      role_id:
+        type: string
+    type: object
+  user.UserDTO:
+    properties:
+      enabled:
+        type: boolean
+      firstname:
+        type: string
+      lastname:
+        type: string
+      password:
+        type: string
+      role_id:
+        type: string
+      username:
+        type: string
+    type: object
+  user.UserMeResp:
+    properties:
+      firstname:
+        type: string
+      id:
+        type: string
+      lastname:
+        type: string
+      role:
+        $ref: '#/definitions/user.RolesResp'
+      username:
+        type: string
+    type: object
+  user.UserResp:
+    properties:
+      enabled:
+        type: boolean
+      firstname:
+        type: string
+      id:
+        type: string
+      lastname:
+        type: string
+      role:
+        $ref: '#/definitions/user.RolesResp'
+      username:
+        type: string
+    type: object
+  warehouse.LogisticCenterDto:
+    properties:
+      logistic_center_id:
+        type: string
+      logistic_center_name:
+        type: string
+    type: object
+  warehouse.WarehouseReq:
+    properties:
+      logistic_center_id:
+        type: string
+      warehouse_name:
+        type: string
+    required:
+    - logistic_center_id
+    - warehouse_name
+    type: object
+  warehouse.WarehouseRes:
+    properties:
+      logistic_centers:
+        $ref: '#/definitions/warehouse.LogisticCenterDto'
+      warehouse_id:
+        type: string
+      warehouse_name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is an inventory management server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Inventory Management API
+  version: "2.0"
+paths:
+  /auth/refresh:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.RefreshTokenResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: RefreshToken refreshes the given token.
+      tags:
+      - auth
+  /auth/sign-in:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Sign In Req
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/auth.SignInReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.SignInResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      summary: Sign in the user to system.
+      tags:
+      - auth
+  /auth/sign-out:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.SignOutDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Sign out the user from system.
+      tags:
+      - auth
+  /inventories/{page}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Search text (length min=3)
+        in: query
+        name: q
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/inventory.InventoryResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all inventories.
+      tags:
+      - inventory
+  /inventory:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Inventory
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/inventory.CreateInventoryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/inventory.InventoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new inventory.
+      tags:
+      - inventory
+  /inventory-categories:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/inventoryCategory.InventoryCategoryDTO'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all inventory categories.
+      tags:
+      - inventory-category
+  /inventory-categories/{page}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/inventoryCategory.InventoryCategoryResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all inventory categories with pagination.
+      tags:
+      - inventory-category
+  /inventory-category:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Inventory Category
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/inventoryCategory.InventoryCategoryReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/inventoryCategory.InventoryCategoryDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new inventory category.
+      tags:
+      - inventory-category
+  /inventory-category/{inventoryCategoryId}:
+    delete:
+      parameters:
+      - description: Inventory Category ID
+        in: path
+        name: inventoryCategoryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new inventory category.
+      tags:
+      - inventory-category
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Inventory Category ID
+        in: path
+        name: inventoryCategoryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/inventoryCategory.InventoryCategoryDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Gets an inventory category by ID.
+      tags:
+      - inventory-category
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Inventory Category
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/inventoryCategory.InventoryCategoryReq'
+      - description: Inventory Category ID
+        in: path
+        name: inventoryCategoryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/inventoryCategory.InventoryCategoryDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Update the inventory category.
+      tags:
+      - inventory-category
+  /inventory/{inventoryId}:
+    delete:
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: inventoryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete inventory by id.
+      tags:
+      - inventory
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: inventoryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/inventory.InventoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Gets an inventory by ID.
+      tags:
+      - inventory
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Inventory DTO
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/inventory.UpdateInventoryRequest'
+      - description: Inventory ID
+        in: path
+        name: inventoryId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/inventory.InventoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Update the inventory.
+      tags:
+      - inventory
+  /location:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Location
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/location.LocationDTOReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/location.LocationDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new location.
+      tags:
+      - location
+  /location/{locationId}:
+    delete:
+      parameters:
+      - description: Location ID
+        in: path
+        name: locationId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete location by id.
+      tags:
+      - location
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Location DTO
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/location.LocationDTOReq'
+      - description: Location ID
+        in: path
+        name: locationId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/location.LocationDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Update the location.
+      tags:
+      - location
+  /logistic-center:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: LogisticCenter
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/logisticCenter.LogisticCenterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/logisticCenter.LogisticCenterDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new logisticCenter.
+      tags:
+      - logistic-center
+  /logistic-center/{logisticCenterId}:
+    delete:
+      parameters:
+      - description: LogisticCenter ID
+        in: path
+        name: logisticCenterId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new logisticCenter.
+      tags:
+      - logistic-center
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: LogisticCenter ID
+        in: path
+        name: logisticCenterId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/logisticCenter.LogisticCenterResponseDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Gets an logisticCenter by ID.
+      tags:
+      - logistic-center
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: LogisticCenter DTO
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/logisticCenter.LogisticCenterRequest'
+      - description: LogisticCenter ID
+        in: path
+        name: logisticCenterId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/logisticCenter.LogisticCenterResponseDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Update the logisticCenter.
+      tags:
+      - logistic-center
+  /logistic-centers:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/logisticCenter.LogisticCenterResponseDTO'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all logisticCenters.
+      tags:
+      - logistic-center
+  /logistic-centers/{page}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/logisticCenter.LogisticCenterResponseDTO'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all logisticCenters with pagination.
+      tags:
+      - logistic-center
+  /user:
+    post:
+      consumes:
+      - application/json
+      description: Create a user in database
+      parameters:
+      - description: UserDTO
+        in: body
+        name: id
+        required: true
+        schema:
+          $ref: '#/definitions/user.UserDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/user.UserResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a user.
+      tags:
+      - user
+  /user/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update a user in database
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: UpdateUserReq
+        in: body
+        name: id
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateUserReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.UserResp'
+        "304":
+          description: Not Modified
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a user
+      tags:
+      - user
+  /user/me:
+    get:
+      consumes:
+      - '*/*'
+      description: get user info from database by token in the request header
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.UserMeResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get user info by token in the request header.
+      tags:
+      - user
+  /user/roles:
+    get:
+      consumes:
+      - '*/*'
+      description: get all roles from roles table in database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/user.RolesResp'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all roles.
+      tags:
+      - user
+  /user/roles/{id}:
+    get:
+      consumes:
+      - '*/*'
+      description: get one role by id from database
+      parameters:
+      - description: Role ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.RolesResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get one role.
+      tags:
+      - user
+  /users:
+    get:
+      consumes:
+      - '*/*'
+      description: get all users from users table in database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/user.UserResp'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all users.
+      tags:
+      - user
+  /warehouse:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Warehouse
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/warehouse.WarehouseReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/warehouse.WarehouseRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new warehouse
+      tags:
+      - warehouse
+  /warehouse/{warehouseId}:
+    delete:
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: warehouseId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new warehouse
+      tags:
+      - warehouse
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Warehouse DTO
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/warehouse.WarehouseReq'
+      - description: Warehouse ID
+        in: path
+        name: warehouseId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/warehouse.WarehouseRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.Response'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/errors.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Update the warehouse.
+      tags:
+      - warehouse
+schemes:
+- http
+- https
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
